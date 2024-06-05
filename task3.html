@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .main-band{
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .body{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            
+        }
+        .img-st{
+            width: 40px;
+            height: 40px;
+        }
+        .band-info{
+            /* padding: 8px; */
+            border: 5px #000000 solid;
+            border-radius: 5%;
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: auto;
+            width: 80%;
+            
+        }
+        .img-box{
+            display: flex;
+            flex-direction: row;
+            
+          
+         
+        
+        }
+        .img-min{
+            display: flex;
+            flex-direction: column;
+           
+           align-items: center;
+           text-align: center;
+           width: 150px;
+        }
+        .img{
+            height: 200px;
+            width: 200px;
+        }
+    
+    </style>
+</head>
+<body>
+    <div id="1"></div>
+
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+     
+   <script type="text/babel">
+    const recipe = {
+        name : 'Рататуй',
+        ingredients: [{product: 'Болгарский перец', count: '2', unit:'шт'}, {product: 'Помидоры', count: '6', unit:'шт'},
+        {product: 'Лук репчатый', count: '1', unit:'шт'}, {product: 'Чеснок', count: '2', unit:'зубчика'},
+        {product: 'Масло оливковое', count: '4', unit:'ст. л.'},{product: 'Цуккини', count: '1', unit:'шт'},
+        {product: 'Кабачок', count: '1', unit:'шт'},{product: 'Баклажан', count: '1', unit:'шт'},
+        {product: 'Тимьян', count: 'по вкусу', unit:''}, {product: 'Лавровый лист', count: 'по вкусу', unit:''},
+        {product: 'Базилик', count: 'по вкусу', unit:''},{product: 'Соль', count: 'по вкусу', unit:''},
+        {product: 'Перец', count: 'по вкусу', unit:''}],
+        cookDesc: 'Как приготовить рататуй: Начнем с подготовки овощей. Нам нужно запечь болгарский перец в духовке. Для этого я в начале очищаю его от семечек, чтобы для простоты их вымыть под водой, а не выковыривать семечки из мягкого готового целого перца. Отправляем в разогретую до 200 градусов духовку минут на 20. Когда появится запечённая кожица - перец готов. Также для соуса нужно очистить от кожицы и помидоры. Для этого нужно залить их на пару минут кипятком. Нарезаем кубиком очищенные от кожицы помидоры. Затем мелко шинкуем лук и чеснок. Ставим на плиту сковородку, наливаем оливковое масло (2 ст. ложки). Сначала обжарим лук до прозрачности, а затем добавим к нему и чеснок, так как чеснок очень быстро может пригореть. Чеснока добавляйте столько, насколько вы его любите - у него яркий вкус. Добавляем к луку порезанные помидоры и чуть попозже базилик, тимьян, лавровый лист. Можно зелень и мелко нарезать, но я решила лишь придать аромат блюду, вытащив веточки зелени позже. Перец очищаем и мелко нарезаем. Добавим его к помидорам и оставим тушиться еще немного, чтобы вода больше испарилась. Можно немного подсолить и поперчить. Тем времени нарезаем все овощи для рататуя - баклажан, кабачок, цуккини (у меня он зеленый, но если найдете желтый - то блюдо в итоге будет еще красивее) и помидоры. Постарайтесь использовать все овощи одинакового диаметра. Выкладываем в форму, в которой будет запекаться рататуй, сначала соус пеперад, а сверху него - порезанные кружочками овощи. Чередуйте их в любом порядке. Сверху нужно смазать оливковым маслом со специями, чесноком и зеленью. Можно все сразу смешать в чашке и затем этим соусом с помощью кисточки равномерно смазать овощи. Накрываем крышкой или фольгой и отправляем в разогретую до 160-170 градусов духовку томиться примерно 1,5 часа, после этого снимаем фольгу или крышку и оставляем еще минут на 30 - смотрите по готовности. Сверху овощи должны немного прожариться.',
+       image: 'la-ratatouille-cover_webp.webp',
+        getName:function(){
+            return this.name;
+        },
+        getImage:function(){
+            return this.image;
+        },
+        getIngredients:function(){
+return  <ul>
+                        {this.ingredients.map((item, index) => (
+                            <li key={index}>{item.product} - {item.count} {item.unit}</li>
+                        ))}
+                    </ul>
+        },
+        getDesc:function(){
+            return <p>{this.cookDesc}</p>  
+            
+        }
+    };
+   
+    const bandClassName = "band-info";
+   
+    const styleName={
+        fontSize: '25px'
+    }
+    const styleObj = {
+       
+        fontFamily:'Verdana'
+    };
+    const mainBandClassName="main-band";
+    ReactDOM    
+        .createRoot(document.getElementById("1"))
+        .render(
+            <div className={mainBandClassName}>
+                <div className={bandClassName}  style={styleObj}>
+                
+                <p style={styleName}>{recipe.getName()}</p>
+                <div> <img src={recipe.getImage()} alt="" class="img"></img> </div>
+                {recipe.getIngredients()}
+               {recipe.getDesc()}
+            
+            
+        </div>
+                </div>
+            
+        );
+   </script>
+</body>
+</html>

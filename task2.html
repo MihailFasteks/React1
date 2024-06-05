@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .main-band{
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .body{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            
+        }
+        .img-st{
+            width: 40px;
+            height: 40px;
+        }
+        .band-info{
+            /* padding: 8px; */
+            border: 5px #000000 solid;
+            border-radius: 15%;
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 500px;
+        }
+        .img-box{
+            display: flex;
+            flex-direction: row;
+            
+          
+         
+        
+        }
+        .img-min{
+            display: flex;
+            flex-direction: column;
+           
+           align-items: center;
+           text-align: center;
+           width: 150px;
+        }
+        .img{
+            height: 100px;
+            width: 100px;
+        }
+    
+    </style>
+</head>
+<body>
+    <div id="1"></div>
+
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+     
+   <script type="text/babel">
+    const band = {
+        name : 'Валентин Стрыкало',
+        members: [{memName: 'Юрий Каплан', part: 'Вокал и гитара'}, {memName: 'Константин Пыжов', part: 'Гитара'},
+        {memName: 'Станислав Мурашко', part: 'Бас-гитара'}, {memName: 'Владимир Яковлев', part: 'Ударные'}],
+        albums: [{albumName: 'Смирись и расслабься!', year: 2012, photo: '1200x1200bb-2.jpg'},
+        {albumName: 'Часть чего-то большего', year: 2013, photo: 'images-6.jpeg'},
+        {albumName: 'Развлечение', year: 2016, photo: '1200x1200bb.jpg'}],
+        getName:function(){
+            return this.name;
+        },
+        getMembers:function(){
+return <ul>
+    <li>{this.members[0].memName}
+        <ul>
+            <li>{this.members[0].part}</li>
+        </ul>
+        </li>
+    <li>{this.members[1].memName}<ul><li>{this.members[1].part}</li></ul></li>
+    <li>{this.members[2].memName}<ul><li>{this.members[2].part}</li></ul></li>
+    <li>{this.members[3].memName}<ul><li>{this.members[3].part}</li></ul></li>
+    </ul>
+        },
+        getAlbums:function(){
+            return <div class="ex-container">
+                <div class="img-box">
+                <div class="img-min">
+                    <img src='1200x1200bb-2.jpg' class="img"></img>
+                   <p>{this.albums[0].albumName}</p> 
+                    </div>
+                    <div class="img-min">
+                    <img src='images-6.jpeg' class="img"></img>
+                   <p>{this.albums[1].albumName}</p> 
+                    </div>
+                    <div class="img-min"> 
+                    <img src='1200x1200bb.jpg' class="img"></img>
+                   <p>{this.albums[2].albumName}</p> 
+                    </div>
+                </div>
+                </div>
+            
+        }
+    };
+    const imgStyle="img-st";
+    const bandClassName = "band-info";
+   
+    const styleName={
+        fontSize: '25px'
+    }
+    const styleObj = {
+       
+        fontFamily:'Verdana'
+    };
+    const mainBandClassName="main-band";
+    ReactDOM    
+        .createRoot(document.getElementById("1"))
+        .render(
+            <div className={mainBandClassName}>
+                <div className={bandClassName}  style={styleObj}>
+                
+                <p style={styleName}>{band.getName()}</p>
+                <p>СОСТАВ</p>
+                {band.getMembers()}
+               {band.getAlbums()}
+            
+            
+        </div>
+                </div>
+            
+        );
+   </script>
+</body>
+</html>

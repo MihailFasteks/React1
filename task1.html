@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .user-info{
+            padding: 8px;
+            border: 1px #ccc solid;
+        }
+    </style>
+</head>
+<body>
+    <div id="1"></div>
+
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+     
+   <script type="text/babel">
+    const book = {
+        name : 'Мой Портфель',
+        author: 'Михаил Жванецкий',
+        papers: 250,
+        genr: 'Сатира',
+        comment: 'Обожнаю эту книженцию!',
+        getBookInfo: function(){ 
+            return `Name: ${this.name}, author: ${this.author}, papers: ${this.papers}, 
+            genr: ${this.genr}, comment: ${this.comment}`;
+        }
+    };
+    const bookClassName = "book-info";
+    const styleObj = {
+        color:'red', 
+        fontFamily:'Verdana'
+    };
+    ReactDOM    
+        .createRoot(document.getElementById("1"))
+        .render(
+            <div className={bookClassName}  style={styleObj}>
+                <p>Book INFO</p>
+                <p>{book.getBookInfo()}</p>
+            </div>
+        );
+   </script>
+</body>
+</html>
